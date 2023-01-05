@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Login Form</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins";
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #222;
+      }
+      .box {
+        position: relative;
+        background: #2d2d2d;
+        width: 500px;
+        height: 500px;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .box::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 100%;
+        height: 100%;
+        transform-origin: bottom right;
+        background: linear-gradient(0deg, transparent, orange, transparent);
+        animation: animate 6s linear infinite;
+      }
+      .box::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 100%;
+        height: 100%;
+        transform-origin: bottom right;
+        background: linear-gradient(0deg, transparent, orange, transparent);
+        animation: animate 6s linear infinite;
+        animation-delay: -3s;
+      }
+      @keyframes animate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .form {
+        position: absolute;
+        inset: 3px;
+        z-index: 10;
+        background: #2d2d2d;
+        border-radius: 8px;
+        padding: 40px 50px;
+        display: flex;
+        flex-direction: column;
+      }
+      .form h2 {
+        color: aqua;
+        text-align: center;
+        font-size: 30px;
+      }
+      .inputBox {
+        margin: 34px 0;
+        width: 100%;
+        position: relative;
+      }
+      .inputBox input {
+        position: relative;
+        width: 100%;
+        border: 0;
+        outline: none;
+        background: transparent;
+        padding: 15px 10px;
+        color: #2d2d2d;
+        z-index: 10;
+        font-size: 20px;
+      }
+      .inputBox span {
+        position: absolute;
+        left: 0;
+        padding: 20px 10px;
+        pointer-events: none;
+        transition: 0.3s;
+        color: rgba(231, 231, 231, 0.493);
+      }
+      .inputBox input:focus ~ span,
+      .inputBox input:valid ~ span {
+        transform: translate(-10px, -45px);
+        /* font-size: 12px; */
+        color: rgba(0, 255, 255, 0.63);
+      }
+      .inputBox i {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: rgba(0, 255, 255, 0.281);
+        border-radius: 8px;
+        transition: 0.3s;
+        z-index: 9;
+      }
+      .inputBox input:focus ~ i,
+      .inputBox input:valid ~ i {
+        height: 90%;
+      }
+      .btn {
+        /* width: 100px; */
+        padding: 10px 20px;
+        outline: none;
+        border: 0;
+        background: rgba(255, 183, 50, 0.329);
+        border-radius: 5px;
+        color: rgb(252, 204, 204);
+        font-size: 20px;
+        margin-top: 20px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .btn:hover {
+        background: rgba(255, 183, 50, 0.205);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <form class="form">
+        <h2>Login</h2>
+        <div class="inputBox">
+          <input type="text" required="required" />
+          <span>Name</span>
+          <i></i>
+        </div>
+        <div class="inputBox">
+          <input type="password" required="required" />
+          <span>Password</span>
+          <i></i>
+        </div>
+        <input type="submit" value="Submit" class="btn" />
+      </form>
+    </div>
+  </body>
+</html>
